@@ -1,0 +1,10 @@
+.main {
+    width: 98%;
+    height: 98vh;
+    max-width: 48rem;
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid red;
+}
