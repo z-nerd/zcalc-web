@@ -1,4 +1,4 @@
-.main {
+.calc {
     width: 98%;
     height: 98dvh;
     max-width: 48rem;
@@ -7,4 +7,14 @@
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
     border: 5px solid red;
+}
+
+.calc-disp {
+    height: 48.5%;
+    border: 5px solid blue;
+}
+
+.clac-key {
+    height: 48.5%;
+    border: 5px solid green;
 }

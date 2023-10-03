@@ -54,7 +54,9 @@ function App() {
   }, [])
 
   return (
-    <main className="main">
+    <main className="calc">
+      <div className="calc-disp"></div>
+      <div className="clac-key"></div>
     </main>
   )
 }
