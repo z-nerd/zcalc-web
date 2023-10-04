@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import ZCalc from "./zcalc-core"
 import './App.scss'
 import { Keyboard } from "./components/Keyboard"
