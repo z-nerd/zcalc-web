@@ -7,10 +7,10 @@
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template: 50px 2fr 2fr / auto;
+    grid-template: 3.5rem 1fr 1fr / 1fr;
 
     &--advance {
-        grid-template: 50px 2fr 3fr / auto;
+        grid-template: 3.5rem 3fr 4fr / 1fr;
     }
 }
 
@@ -19,13 +19,7 @@
     border: 5px solid yellow;
 }
 
-.calc-disp {
+.calc-display {
     margin-inline: 0.313rem;
     border: 5px solid blue;
-}
-
-.clac-key {
-    margin-inline: 0.313rem;
-    margin-block-end: 0.625rem;
-    border: 5px solid green;
 }

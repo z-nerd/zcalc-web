@@ -1,6 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import ZCalc from "./zcalc-core"
 import './App.scss'
+import { Keyboard } from "./components/Keyboard"
 
 
 function App() {
@@ -56,8 +57,8 @@ function App() {
   return (
     <main className="calc">
       <div className="calc-menu"></div>
-      <div className="calc-disp"></div>
-      <div className="clac-key"></div>
+      <div className="calc-display"></div>
+      <Keyboard />
     </main>
   )
 }
