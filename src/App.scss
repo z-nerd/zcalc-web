@@ -6,15 +6,23 @@
     inset-block-start: 50%;
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
+    display: grid;
+    grid-template: 50px 2fr 2fr / auto;
     border: 5px solid red;
+
+    &--advance {
+        grid-template: 50px 2fr 3fr / auto;
+    }
+}
+
+.calc-menu {
+    border: 5px solid yellow;
 }
 
 .calc-disp {
-    height: 48.9%;
     border: 5px solid blue;
 }
 
 .clac-key {
-    height: 48.9%;
     border: 5px solid green;
 }
