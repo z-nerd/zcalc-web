@@ -16,12 +16,12 @@ export const Keyboard = ({ defaultType = 'normal', onTypeChange }: KeyboardProps
             {
                 isAdvanced && <>
                     <div className={styles.key}>2nd</div>
-                    <div className={styles.key}>deg</div>
+                    <div className={styles.key}>{'°'}</div>
                     <div className={styles.key}>sin</div>
                     <div className={styles.key}>cos</div>
                     <div className={styles.key}>tan</div>
 
-                    <div className={styles.key}>x^y</div>
+                    <div className={styles.key}>x<sup>y</sup></div>
                     <div className={styles.key}>lg</div>
                     <div className={styles.key}>ln</div>
                     <div className={styles.key}>{'('}</div>
@@ -31,12 +31,12 @@ export const Keyboard = ({ defaultType = 'normal', onTypeChange }: KeyboardProps
 
             {
                 isAdvanced &&
-                <div className={styles.key}>{'rad(x)'}</div>
+                <div className={styles.key}>{'√x'}</div>
             }
             <div className={styles.key}>C</div>
             <div className={styles.key}>Del</div>
             <div className={styles.key}>%</div>
-            <div className={styles.key}>/</div>
+            <div className={styles.key}>÷</div>
 
             {
                 isAdvanced &&
@@ -45,7 +45,7 @@ export const Keyboard = ({ defaultType = 'normal', onTypeChange }: KeyboardProps
             <div className={styles.key}>7</div>
             <div className={styles.key}>8</div>
             <div className={styles.key}>9</div>
-            <div className={styles.key}>x</div>
+            <div className={styles.key}>×</div>
 
             {
                 isAdvanced &&
@@ -58,7 +58,7 @@ export const Keyboard = ({ defaultType = 'normal', onTypeChange }: KeyboardProps
 
             {
                 isAdvanced &&
-                <div className={styles.key}>{'pi'}</div>
+                <div className={styles.key}>{'π'}</div>
             }
             <div className={styles.key}>1</div>
             <div className={styles.key}>2</div>
@@ -73,7 +73,7 @@ export const Keyboard = ({ defaultType = 'normal', onTypeChange }: KeyboardProps
                 }}>convert</div>
             {
                 isAdvanced &&
-                <div className={styles.key}>{'e'}</div>
+                <div className={styles.key}>{'EXP'}</div>
             }
             <div className={styles.key}>0</div>
             <div className={styles.key}>.</div>

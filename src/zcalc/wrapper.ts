@@ -1,6 +1,7 @@
 import createModule from './zcalc-core';
 
-const ZcalcCore = async () => {
+
+const ZCoreWrapper = async () => {
     const Module = await createModule()
 
     const zAdd = Module.cwrap("z_add", "string", 
@@ -99,4 +100,4 @@ const ZcalcCore = async () => {
 }
 
 
-export default ZcalcCore;
+export default ZCoreWrapper;
