@@ -17,8 +17,8 @@ const Zcalc = async (
       | MulExp
   
     MulExp
-      = MulExp "*" ExpExp  -- times
-      | MulExp "/" ExpExp  -- divide
+      = MulExp "×" ExpExp  -- times
+      | MulExp "÷" ExpExp  -- divide
       | ExpExp
   
     ExpExp

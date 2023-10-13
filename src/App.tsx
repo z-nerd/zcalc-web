@@ -21,7 +21,7 @@ function App() {
     <main className={`calc ${keysType === "advanced" && "calc--keys-adv"}`}>
       <div className="calc-menu"></div>
       <div className="calc-display">{stack} {
-        ans && <>
+        (ans && ans !== "error") && <>
         <br />
         <br />
         {ans}
