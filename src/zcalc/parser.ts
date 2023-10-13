@@ -149,9 +149,7 @@ const Zcalc = async (
   const match = calcGrammar.match(input)
 
   if (match.succeeded()) {
-    const result = semantics(match).eval()
-    
-    return result
+    return semantics(match).eval() as string
   } else {
     return "error"
   }
