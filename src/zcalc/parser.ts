@@ -91,12 +91,13 @@ const Zcalc = async (
     ident  (an identifier)
       = "π"
       | "e"
+      | "zero"
     
     number  (a number)
       = digit* "." digit+("E"|"e")digit+  -- fract_e
-      | digit* "." digit+  -- fract
-      | digit+ ("E"|"e") digit+  -- whole_e
-      | digit+             -- whole
+      | digit* "." digit+                 -- fract
+      | digit+ ("E"|"e") digit+           -- whole_e
+      | digit+                            -- whole
   }
 `)
 
@@ -137,10 +138,13 @@ const Zcalc = async (
     LnExp_ln: (_, a) => zLn(a.eval(), precision),
 
     PriExp_paren: (_1, exp, _2) => exp.eval(),
+    PriExp_neg: (_1, a) => zSub("0", a.eval(), precision),
+    PriExp_pos: (_1, a) => zAdd("0", a.eval(), precision),
     PriExp_ident: (id) => {
       switch (id.sourceString) {
         case "π": return zPI(precision)
-        default: return "nan"
+        case "zero": return "0"
+        default: return "NaN"
       }
     },
     number: (digits) => digits.sourceString
