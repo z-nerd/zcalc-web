@@ -2,10 +2,10 @@ import { grammar } from "ohm-js";
 import ZCoreWrapper from "./wrapper";
 
 const Zcalc = async (
-  input: string, 
+  input: string,
   precision: number = 500,
   sys: "rad" | "deg" = "deg"
-  ) => {
+) => {
   const calcGrammar = grammar(`
   Zcalc {
     Exp
@@ -103,23 +103,23 @@ const Zcalc = async (
 
   const semantics = calcGrammar.createSemantics()
 
-  const { 
-    zAdd, zSub, zMul, zDiv, zFact, zPow, zSqrt, 
+  const {
+    zAdd, zSub, zMul, zDiv, zFact, zPow, zSqrt,
     zSin, zCos, zTan, zAsin, zAcos, zAtan, zPI,
     zLn, zLog, zDeg2rad, zRad2deg
   } = await ZCoreWrapper()
 
   semantics.addOperation('eval', {
     Exp: (exp) => exp.eval(),
-    
+
     AddExp_plus: (a, _, b) => zAdd(a.eval(), b.eval(), precision),
     AddExp_minus: (a, _, b) => zSub(a.eval(), b.eval(), precision),
     MulExp_times: (a, _, b) => zMul(a.eval(), b.eval(), precision),
     MulExp_divide: (a, _, b) => zDiv(a.eval(), b.eval(), precision),
-    
+
     PersExp_pers: (a, _) => zDiv(a.eval(), "100", precision),
     FactExp_fact: (a, _) => zFact(a.eval(), precision),
-    
+
     ExpExp_power: (a, _, b) => zPow(a.eval(), b.eval(), precision),
     SqrtExp_sqrt: (_, a) => zSqrt(a.eval(), precision),
 
@@ -130,9 +130,21 @@ const Zcalc = async (
     CosExp_cos: (_, a) => zCos(sys == "rad" ? a.eval() : zDeg2rad(a.eval(), precision), precision),
     TanExp_tan: (_, a) => zTan(sys == "rad" ? a.eval() : zDeg2rad(a.eval(), precision), precision),
 
-    AsinExp_asin: (_, a) => zRad2deg(zAsin(a.eval(), precision), precision) + "°",
-    ATanExp_atan: (_, a) => zRad2deg(zAtan(a.eval(), precision), precision) + "°",
-    AcosExp_acos: (_, a) => zRad2deg(zAcos(a.eval(), precision), precision) + "°",
+    AsinExp_asin: (_, a) => {
+      const result = zRad2deg(zAsin(a.eval(), precision), precision)
+      if (result.toLowerCase() !== "nan") return result + "°"
+      return result
+    },
+    ATanExp_atan: (_, a) => {
+      const result = zRad2deg(zAtan(a.eval(), precision), precision)
+      if (result.toLowerCase() !== "nan") return result + "°"
+      return result
+    },
+    AcosExp_acos: (_, a) => {
+      const result = zRad2deg(zAcos(a.eval(), precision), precision)
+      if (result.toLowerCase() !== "nan") return result + "°"
+      return result
+    },
 
     LogExp_log: (_, a) => zLog(a.eval(), precision),
     LnExp_ln: (_, a) => zLn(a.eval(), precision),

@@ -56,7 +56,7 @@ function App() {
                 if (state === "zero" && key === "0")
                   return state
                 else if (state === "zero" && 
-                  !["0", "×", "÷", "+", "-"].includes(key))
+                  !["0", "×", "÷", "+", "-", "rad", "^2", "°", "^", "!", "^(-1)", "E"].includes(key))
                   return key
                 else if(state === "zero")
                   return "0" + key

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './index.module.scss'
 
 interface KeyboardProps {
@@ -12,27 +13,30 @@ export const Keyboard = ({
     onKeyPress,
 }: KeyboardProps) => {
     const isAdvanced = keysType === "advanced"
+    const [is2nd, setIs2nd] = useState(false)
 
     return (
         <div className={`${styles.keys} ${isAdvanced && styles["keys--adv"]}`}>
             <div 
-            className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}>2nd</div>
+            className={`${styles.key} 
+            ${!isAdvanced && styles["key--hide"]}`} style={{ opacity: is2nd ? 0.5: 1 }}
+                onClick={() => setIs2nd(state => !state)}>2nd</div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("°")}
-            >{"°"}</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "rad" : "°")}
+            >{ is2nd ? "rad" : "°"}</div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("sin(")}
-            >sin</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "asin(" : "sin(")}
+            >{is2nd ? <>sin<sup>-1</sup></> : <>sin</>}</div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("cos(")}
-            >cos</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "acos(" : "cos(")}
+            >{is2nd ? <>cos<sup>-1</sup></> : <>cos</>}</div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("tan(")}
-            >tan</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "atan(" : "tan(")}
+            >{is2nd ? <>tan<sup>-1</sup></> : <>tan</>}</div>
 
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
@@ -40,8 +44,8 @@ export const Keyboard = ({
             >x<sup>y</sup></div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("log(")}
-            >log</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "10^" : "log(")}
+            >{is2nd ? <>10<sup>x</sup></> : "log"}</div>
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
             onClick={(_e) => onKeyPress && onKeyPress("ln(")}
@@ -57,8 +61,8 @@ export const Keyboard = ({
 
             <div 
             className={`${styles.key} ${!isAdvanced && styles["key--hide"]}`}
-            onClick={(_e) => onKeyPress && onKeyPress("√")}
-            >{"√x"}</div>
+            onClick={(_e) => onKeyPress && onKeyPress(is2nd ? "^2" : "√")}
+            >{is2nd ? <>x<sup>2</sup></> : "√x"}</div>
             <div 
             className={`${styles.key} ${styles["key-C"]}`}
             onClick={(_e) => onKeyPress && onKeyPress("CLEAR-SCREEN")}
