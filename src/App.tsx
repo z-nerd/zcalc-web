@@ -23,24 +23,30 @@ function App() {
   return (
     <main className={`calc ${keysType === "advanced" && "calc--keys-adv"}`}>
       <div className="calc-menu"></div>
-      <div className="calc-display">{stack} {
-        (ans && ans !== "error") && <>
-          <br />
-          <br />
-          {ans}
-        </>
-      }</div>
+      <div className="calc-display">
+        {stack}
+        {
+          (ans && ans !== "error") && <>
+            <br />
+            <br />
+            {ans}
+          </>
+        }
+      </div>
       <Keyboard
         keysType={keysType}
         onKeysTypeChange={(kt) => setKeysType(kt)}
         onKeyPress={(key) => {
           switch (key) {
-            case "EQUAL-ANS": break
+            case "EQUAL-ANS":
+              if (ans !== "error")
+                setStack(ans)
+              break
             case "DEL-CHAR":
               setStack(state => {
                 if (state !== "zero") {
                   const delResult = state.slice(0, -1)
-                  if(delResult === "" || delResult === "0") return "zero"
+                  if (delResult === "" || delResult === "0") return "zero"
                   return delResult
                 }
                 return state
@@ -55,10 +61,10 @@ function App() {
               setStack(state => {
                 if (state === "zero" && key === "0")
                   return state
-                else if (state === "zero" && 
+                else if (state === "zero" &&
                   !["0", "×", "÷", "+", "-", "rad", "^2", "°", "^", "!", "^(-1)", "E"].includes(key))
                   return key
-                else if(state === "zero")
+                else if (state === "zero")
                   return "0" + key
                 else
                   return state + key
