@@ -15,6 +15,7 @@ sup{
     justify-content: center;
     align-items: center;
     transition: all 0.45s ease-in-out;
+    font-size: 1.75rem;
 
     &--adv {
         grid-template: repeat(7, 1fr) / repeat(5, 1fr);
