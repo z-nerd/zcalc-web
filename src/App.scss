@@ -7,17 +7,18 @@
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template: 3.5rem 1fr 1fr / 100%;
+    grid-template: 2.2rem 1fr 1fr / 100%;
     transition: all 0.45s ease-in-out;
 
     &--keys-adv {
-        grid-template: 3.5rem 3fr 4fr / 100%;
+        grid-template: 2.2rem 3fr 4fr / 100%;
     }
 }
 
 .calc-menu {
-    margin-inline: 0.313rem;
-    border: 5px solid yellow;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: center;
 }
 
 .calc-display {
@@ -25,6 +26,7 @@
     margin-inline: 0.313rem;
     margin-block: 0.3rem;
     word-wrap: break-word;
+    overflow-y: auto;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
     padding: 0.7rem;
     border-radius: 0.4rem;

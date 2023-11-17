@@ -94,9 +94,9 @@ const Zcalc = async (
       | "zero"
     
     number  (a number)
-      = digit* "." digit+("E"|"e")digit+  -- fract_e
+      = digit* "." digit+("E"|"e")("-"|"+"|"") digit+  -- fract_e
       | digit* "." digit+                 -- fract
-      | digit+ ("E"|"e") digit+           -- whole_e
+      | digit+ ("E"|"e")("-"|"+"|"") digit+           -- whole_e
       | digit+                            -- whole
   }
 `)
