@@ -98,3 +98,8 @@ html, body {
     overflow: hidden;
     touch-action: manipulation;
 }
+
+body:has(.darkmode) {
+    background: #753;
+    color: #dcb;
+}

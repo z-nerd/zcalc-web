@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from 'react'
 import styles from './index.module.scss'
 import { Modal } from '../modal'
+import { useLocalStorage } from 'react-use'
 
 export interface MenuIconProps {
     onClick?: (e: MouseEvent) => void
@@ -26,7 +27,9 @@ export interface MenuProps {
 
 export const Menu = ({ }: MenuProps) => {
     const [showSub, setShowSub] = useState(false)
-    const [showAboutMe, setShowAboutMe] = useState(false)
+    const [showAbout, setShowAbout] = useState(false)
+    const [showSetting, setShowSetting] = useState(false)
+    const [darkmode, setDarkmode] = useLocalStorage('darkmode')
 
     return (
         <>
@@ -39,20 +42,61 @@ export const Menu = ({ }: MenuProps) => {
                                 className={styles['menu-sub_item']}
                                 onClick={(e) => {
                                     e.stopPropagation()
-                                    setShowAboutMe(true)
+                                    setShowSetting(true)
                                 }}
                             >
-                                About Me
+                                Setting
                             </div>
-                            <Modal open={showAboutMe}
-                                title='About Me'
+                            <div
+                                className={styles['menu-sub_item']}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    setShowAbout(true)
+                                }}
+                            >
+                                About
+                            </div>
+                            <Modal open={showSetting}
+                                title='Setting'
                                 onClose={(e) => {
                                     e.stopPropagation()
-                                    setShowAboutMe(false)
+                                    setShowSetting(false)
                                 }}>
-                                    An advance high precision 
-                                    calculator for scientists. <br />
-                                    Created by <strong>zero.js.dev@gmail.com</strong> for eveyone
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                }}>
+                                    <p 
+                                    style={{
+                                        marginInline: '1rem',
+                                    }}>Dark mode</p>
+                                    <input 
+                                    style={{
+                                        marginInline: '1rem',
+                                    }}
+                                    onChange={(e) => {
+                                        if(e.target.checked)
+                                            setDarkmode('true')
+                                        else
+                                            setDarkmode('false')
+                                        location.reload()
+                                    }}
+                                    checked={darkmode === "true"}
+                                    type="checkbox" 
+                                    name="darkMode" />
+                                </div>
+                            </Modal>
+                            <Modal open={showAbout}
+                                title='About'
+                                onClose={(e) => {
+                                    e.stopPropagation()
+                                    setShowAbout(false)
+                                }}>
+                                An advance high precision
+                                calculator for scientists. <br />
+                                Created by <strong>zero.js.dev@gmail.com</strong> for eveyone
                             </Modal>
                         </div>
                     </>

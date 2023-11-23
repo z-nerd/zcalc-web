@@ -3,11 +3,17 @@ import './App.scss'
 import { Keyboard } from "./components/keyboard"
 import Zcalc from './zcalc/parser'
 import { Menu } from './components/menu'
+import { useLocalStorage } from 'react-use'
+
+const isSysDark = () => {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+} 
 
 function App() {
   const [keysType, setKeysType] = useState<"advanced" | "normal">("normal")
   const [stack, setStack] = useState("zero")
   const [ans, setAns] = useState("zero")
+  const [darkmode] = useLocalStorage('darkmode', isSysDark() ? 'true' : 'false')
 
   useEffect(() => {
     (async () => {
@@ -22,7 +28,10 @@ function App() {
   })
 
   return (
-    <main className={`calc ${keysType === "advanced" && "calc--keys-adv"}`}>
+    <main className={`calc 
+    ${keysType === "advanced" && "calc--keys-adv"}
+    ${darkmode === "true" && "darkmode"}
+    `}>
       <div className="calc-menu">
         <Menu />
       </div>

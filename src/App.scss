@@ -32,3 +32,17 @@
     padding: 0.7rem;
     border-radius: 0.4rem;
 }
+
+.darkmode {
+    background: #753;
+    color: #dcb;
+
+    path {
+        fill: #dcb;
+    }
+
+    dialog {
+        background: #753;
+        color: #dcb;
+    }
+}
