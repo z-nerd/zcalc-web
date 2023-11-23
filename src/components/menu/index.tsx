@@ -74,6 +74,9 @@ export const Menu = ({ }: MenuProps) => {
                                     }}>Dark mode</p>
                                     <input 
                                     style={{
+                                        outline: 'none',
+                                        transform: 'scale(2)',
+                                        accentColor: '#34495e',
                                         marginInline: '1rem',
                                     }}
                                     onChange={(e) => {
