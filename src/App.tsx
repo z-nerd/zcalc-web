@@ -10,10 +10,10 @@ const isSysDark = () => {
 } 
 
 function App() {
-  const [keysType, setKeysType] = useState<"advanced" | "normal">("normal")
+  const [keysType, setKeysType] = useLocalStorage<"advanced" | "normal">("keysType", "advanced")
   const [stack, setStack] = useState("zero")
   const [ans, setAns] = useState("zero")
-  const [darkmode] = useLocalStorage('darkmode', isSysDark() ? 'true' : 'false')
+  const [darkmode] = useLocalStorage('darkmode', isSysDark() ? "true" : "false")
 
   useEffect(() => {
     (async () => {
